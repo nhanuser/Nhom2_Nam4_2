@@ -17,7 +17,7 @@
                                 while ($row = mysqli_fetch_array($qr)) {
                                     ?>
                             <li class="nav-item">
-                                <a class="nav-link" href="index.php"><?php echo $row["MenuTitle"] ?></a>
+                                <a class="nav-link" href="<?php echo $row["MenuName"] ?>.php"><?php echo $row["MenuTitle"] ?></a>
                             </li>
                             <?php
                                 }

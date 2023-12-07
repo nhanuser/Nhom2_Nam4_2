@@ -219,12 +219,12 @@ if (isset($_GET["id"])) {
                                 <h4 class="small-title">Leave a Reply</h4>
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <form class="form-wrapper">
-                                            <input type="text" class="form-control" placeholder="Your name">
-                                            <input type="text" class="form-control" placeholder="Email address">
-                                            <input type="text" class="form-control" placeholder="Website">
-                                            <textarea class="form-control" placeholder="Your comment"></textarea>
-                                            <button type="submit" class="btn btn-primary">Submit Comment</button>
+                                        <form method="post" class="form-wrapper">
+                                            <input name="cmtname" type="text" class="form-control" placeholder="Your name">
+                                            <input name="cmtemail" type="text" class="form-control" placeholder="Email address">
+                                            <input name="cmtweb" type="text" class="form-control" placeholder="Website">
+                                            <textarea name="cmttext" class="form-control" placeholder="Your comment"></textarea>
+                                            <button name="comment" type="submit" class="btn btn-primary">Gửi bình luận</button>
                                         </form>
                                     </div>
                                 </div>
@@ -254,3 +254,28 @@ if (isset($_GET["id"])) {
 </body>
 
 </html>
+<?php
+
+
+if (isset($_POST['comment'])) {
+    $cmtname = $_POST["cmtname"];
+    $cmtemail = $_POST["cmtemail"];
+    $cmtweb = $_POST["cmtweb"];
+    $cmttext = $_POST["cmttext"];
+    $cmtpostid = $id;
+
+    if (true) {
+        // Sửa câu SQL INSERT INTO để chính xác về cú pháp và thứ tự các trường
+        $sql = "INSERT INTO comments (name, email, web, text, postid) VALUES ('$cmtname', '$cmtemail', '$cmtweb', '$cmttext', '$cmtpostid')";
+        $qr = mysqli_query($conn, $sql);
+
+        // Kiểm tra và thông báo lỗi nếu có
+        if (!$qr) {
+            die("Lỗi khi thêm dữ liệu: " . mysqli_error($conn));
+        }
+
+        echo "<script>window.location.href = 'detail.php?id= $id;';</script>";
+        exit();
+    }
+}
+?>

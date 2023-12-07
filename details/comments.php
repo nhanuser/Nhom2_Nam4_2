@@ -18,7 +18,7 @@
                                                     <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="" class="rounded-circle">
                                                 </a>
                                                 <div class="media-body">
-                                                    <h4 class="media-heading user_name"><?php echo $row['name'] ?><small>5 days ago</small></h4>
+                                                    <h4 class="media-heading user_name"><?php echo $row['name'] ?><small></small></h4>
                                                     <p><?php echo $row['text'] ?></p>
                                                 </div>
                                             </div>

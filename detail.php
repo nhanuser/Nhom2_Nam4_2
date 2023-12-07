@@ -143,7 +143,7 @@ if (isset($_GET["id"])) {
                             <hr class="invis1">
 
                             <div class="custombox authorbox clearfix">
-                                <h4 class="small-title">Về tác giả</h4>
+                                <h4 class="small-title">Tác giả</h4>
                                 <div class="row">
                                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                                         <img src="images/admin.png" alt="" class="img-fluid rounded-circle"> 
@@ -151,7 +151,7 @@ if (isset($_GET["id"])) {
 
                                     <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
                                         <h4><a href="#">Admin</a></h4>
-                                        <p>Quisque sed tristique felis. Lorem <a href="#">visit my website</a> amet, consectetur adipiscing elit. Phasellus quis mi auctor, tincidunt nisl eget, finibus odio. Duis tempus elit quis risus congue feugiat. Thanks for stop Tech Blog!</p>
+                                        <p>Câu cửa miệng của chúng tôi là:</p> <p>Chào em, rất xinh đẹp tuyệt vời, chúc vui vẻ hành phúc bình an</p>
 
                                         <div class="topsocial">
                                             <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>

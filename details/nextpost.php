@@ -3,11 +3,12 @@
 ?>
 <div class="col-lg-6">
                                     <?php
-                                            $sql = "SELECT * FROM post where postid> $id Limit 1";
+                                            $sql = "SELECT * FROM post where postid> $id ;";
                                             $qr = mysqli_query($conn, $sql);
 
                                             if ($qr) {
-                                                while ($row = mysqli_fetch_array($qr)) {
+                                                 ($row = mysqli_fetch_array($qr));
+                                                 if ($row !=null) {
                                         ?>
                                         <div class="blog-list-widget">
                                             <div class="list-group">

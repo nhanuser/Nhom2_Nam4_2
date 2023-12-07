@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <!-- Site Metas -->
-    <title>Tech Blog - Stylish Magazine Blog Template</title>
+    <title>Liên hệ</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -84,13 +85,13 @@
                                     <p>Fusce dapibus nunc quis quam tempor vestibulum sit amet consequat enim. Pellentesque blandit hendrerit placerat. Integertis non.</p>-->
                                 </div> 
                                 <div class="col-lg-7">
-                                    <form class="form-wrapper">
-                                        <input type="text" class="form-control" placeholder="Họ tên">
-                                        <input type="text" class="form-control" placeholder="Địa chỉ Email">
-                                        <input type="text" class="form-control" placeholder="Số điện thoại">
-                                        <input type="text" class="form-control" placeholder="Chủ đề">
-                                        <textarea class="form-control" placeholder="Thông điệp của bạn"></textarea>
-                                        <button type="submit" class="btn btn-primary">Gửi <i class="fa fa-envelope-open-o"></i></button>
+                                    <form method="post" class="form-wrapper">
+                                        <input name="name" type="text" class="form-control" placeholder="Họ tên">
+                                        <input name="email" type="text" class="form-control" placeholder="Địa chỉ Email">
+                                        <input name="phone" type="text" class="form-control" placeholder="Số điện thoại">
+                                        <input name="subject" type="text" class="form-control" placeholder="Chủ đề">
+                                        <textarea name="message" class="form-control" placeholder="Thông điệp của bạn"></textarea>
+                                        <button type="submit" name="contact" class="btn btn-primary">Gửi <i class="fa fa-envelope-open-o"></i></button>
                                     </form>
                                 </div>
                             </div>
@@ -117,3 +118,26 @@
 
 </body>
 </html>
+<?php
+if (isset($_POST['contact'])) {
+    $name = $_POST["name"];
+    $email = $_POST["email"];
+    $phone = $_POST["phone"];
+    $sub = $_POST["subject"];
+    $mes = $_POST["message"];
+
+    if (True) {
+        // Sửa câu SQL INSERT INTO để chính xác về cú pháp và thứ tự các trường
+        $sql = "INSERT INTO mails (name, email, phone, subject, message) VALUES ('$name', '$email', '$phone', '$sub', '$mes')";
+        $qr = mysqli_query($conn, $sql);
+
+        // Kiểm tra và thông báo lỗi nếu có
+        if (!$qr) {
+            die("Lỗi khi thêm dữ liệu: " . mysqli_error($conn));
+        }
+
+        echo "<script>window.location.href = 'contact.php';</script>";
+        exit();
+    }
+}
+?>

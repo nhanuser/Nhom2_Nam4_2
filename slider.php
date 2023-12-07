@@ -17,13 +17,13 @@
                                     <a href="<?php echo $row['Link']; ?>" title=""><?php echo $row['CategoryID']; ?></a>
                                 </span>
                                 <h4>
-                                    <a href="tech-single.html" title=""><?php echo $row['Title']; ?></a>
+                                    <a href="detail.php?id=<?php echo $row['PostID']; ?>" title=""><?php echo $row['Title']; ?></a>
                                 </h4>
                                 <small>
-                                    <a href="tech-single.html" title=""><?php echo $row['CreateDate']; ?></a>
+                                    <a href="#" title=""><?php echo $row['CreateDate']; ?></a>
                                 </small>
                                 <small>
-                                    <a href="tech-author.html" title=""><?php echo $row['Author']; ?></a>
+                                    <a href="#" title=""><?php echo $row['Author']; ?></a>
                                 </small>
                             </div><!-- end meta -->
                         </div><!-- end shadow-desc -->

@@ -11,10 +11,10 @@
                             for ($i = 1; $i <= 3; $i++) {
                             ($row = mysqli_fetch_array($qr)) 
                         ?>
-                                <a href="tech-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <a href="detail.php?id=<?php echo $row['PostID']; ?>" class="list-group-item list-group-item-action flex-column align-items-start">
                                     <div class="w-100 justify-content-between">
                                     <img src="./admin/<?php echo $row['Images']; ?>" alt="" class="img-fluid">
-                                        <h5 class="mb-1"><?php echo $row['Title']; ?></h5>
+                                        <h5 class="mb-1"><?php echo mb_strimwidth($row['Title'], 0, 60, '...'); ?></h5>
                                         
                                     </div>
                                 </a>

@@ -5,7 +5,7 @@
                         <div class="widget">
                             <div class="footer-text text-left">
                                 <a href="index.html"><img src="images/version/tech-footer-logo.png" alt="" class="img-fluid"></a>
-                                <p>Tech Blog is a technology blog, we sharing marketing, news and gadget articles.</p>
+                                <p>Tech Blog là 1 blog phi lợi nhuận.</p>
                                 <div class="social">
                                     <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>              
                                     <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
@@ -18,8 +18,8 @@
 
                                 <div class="newsletter-widget text-left">
                                     <form class="form-inline">
-                                        <input type="text" class="form-control" placeholder="Enter your email address">
-                                        <button type="submit" class="btn btn-primary">SUBMIT</button>
+                                        <input type="text" class="form-control" placeholder="Nhập email của bạn ở đây">
+                                        <button type="submit" class="btn btn-primary">Gửi</button>
                                     </form>
                                 </div><!-- end newsletter -->
                             </div><!-- end footer-text -->
@@ -57,11 +57,11 @@
                     </div><!-- end col -->
                 </div>
 
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-md-12 text-center">
                         <br>
                         <div class="copyright">&copy; Tech Blog. Design: <a href="http://html.design">HTML Design</a>.</div>
                     </div>
-                </div>
+                </div> -->
             </div><!-- end container -->
         </footer><!-- end footer -->

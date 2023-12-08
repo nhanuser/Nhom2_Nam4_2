@@ -14,7 +14,7 @@
                                             <div class="list-group">
                                                 <a href="detail.php?id=<?php echo $row['PostID']?>" class="list-group-item list-group-item-action flex-column align-items-start">
                                                     <div class="w-100 justify-content-between text-right">
-                                                        <img src="<?php echo $row['Images'] ?>" alt="" class="img-fluid float-right">
+                                                        <img src="./admin/<?php echo $row['Images']; ?>" alt="" class="img-fluid float-right">
                                                         <h5 class="mb-1"><?php echo $row['Title'] ?></h5>
                                                         <small>Prev Post</small>
                                                     </div>

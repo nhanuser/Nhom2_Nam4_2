@@ -29,7 +29,7 @@ if (isset($_POST['sua'])) {
         move_uploaded_file($file_tmp, $file_path);
 
         if ($Title != "" && $file_path != "" && $Abstract != "" && $Author != "" && $Contents != "" && $Link != "" && $IsActive != "" && $PostOrder != "" && $MenuID != "" && $CatID != "" && $Status != "") {
-            $sql = "UPDATE post SET Title = '$Title', Images = '$file_path', Abstract ='$Abstract', Author = '$Author', Contents = '$Contents' , CreateDate = '$DateTime' ,  Link = '$Link', IsActive = '$IsActive' , PostOrder = '$PostOrder', MenuID = '$MenuID', CategoryID = '$CatID' , Status = '$Status'";
+            $sql = "UPDATE post SET Title = '$Title', Images = '$file_path', Abstract ='$Abstract', Author = '$Author', Contents = '$Contents' , CreateDate = '$DateTime' ,  Link = '$Link', IsActive = '$IsActive' , PostOrder = '$PostOrder', MenuID = '$MenuID', CategoryID = '$CatID' , Status = '$Status' WHERE PostID = $id";
             $qr = mysqli_query($conn, $sql);
             if ($qr) {
                 echo "<script>window.location.href = 'postmanager.php';</script>";

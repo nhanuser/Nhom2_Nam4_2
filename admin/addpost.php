@@ -28,8 +28,10 @@ if (isset($_POST['add'])) {
         // Tải lên tệp vào thư mục tải lên
         move_uploaded_file($file_tmp, $file_path);
 
-        if ($Title != "" && $file_path != "" && $Abstract != "" && $Contents != "" && $Link != "" && $IsActive != "" && $PostOrder != "" && $MenuID != "" && $CatID != "" && $Status != "") {
-            $sql = "INSERT INTO post (Title, Abstract, Contents, Images, Link, CreateDate, Author, IsActive, PostOrder, MenuID, CategoryID, Status) VALUES ('$Title', '$Abstract', '$Contents', '$file_path', '$Link', '$DateTime', '$IsActive', '$Author', '$PostOrder', '$MenuID', '$CatID', '$Status')"; // Corrected the order of values
+        if ($Title != "" && $file_path != "" && $Abstract != "" && $Contents != "" && $Link != "" && $IsActive 
+        != "" && $PostOrder != "" && $MenuID != "" && $CatID != "" && $Status != "") {
+            $sql = "INSERT INTO post (Title, Abstract, Contents, Images, Link, CreateDate, Author, IsActive, PostOrder, MenuID, CategoryID, Status) VALUES 
+            ('$Title', '$Abstract', '$Contents', '$file_path', '$Link', '$DateTime', '$Author' ,'$IsActive', '$PostOrder', '$MenuID', '$CatID', '$Status')"; // Corrected the order of values
             $qr = mysqli_query($conn, $sql);
             if ($qr) {
                 echo "<script>window.location.href = 'postmanager.php';</script>";

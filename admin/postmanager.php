@@ -34,48 +34,56 @@ include 'connect.php';
                                     <th class="col-2 text-center">Mô tả</th>
                                     <th class="col-1 text-center">Thời gian đăng</th>
                                     <th class="col-2 text-center">Nội dung</th>
-                                    <th class="col-1 text-center">Người đăng</th>
+                                    <th class="col-1 text-center">Tác giả</th>
                                     <th class="col-1 text-center">Chức năng</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-            $sql = "SELECT * FROM post ORDER BY postID DESC";
-            $qr = mysqli_query($conn, $sql);
-            if ($sql) {
-                $i = 0;
-                while ($row = mysqli_fetch_array($qr)) {
-                    $i++;
-                    ?>
-                                <tr>
-                                    <th class="text-center" scope="row">
-                                        <?php echo $i; ?>
-                                    </th>
-                                    <td class="text-center">
-                                        <img src="<?php echo $row["Images"] ?>" style="max-width: 40px"
-                                            class="img-fluid" />
-                                    </td>
-                                    <th class="text-center"><?php echo $row["Title"] ?></th>
-                                    <td class="text-center">
-                                        <span><?php echo substr($row['Abstract'], 0, 60) . '...'; ?></span>
-                                    </td>
-                                    <td class="text-center">
-                                        <span><?php echo date('d/m/Y', strtotime($row['CreateDate'])); ?></span>
-                                    </td>
-                                    <td class="text-center">
-                                        <span><?php echo substr($row['Contents'], 0, 500) . '...'; ?></span>
-                                    </td>
-                                    <th class="text-center"><?php echo $row["Author"] ?></th>
-                                    <td class="text-center">
-                                        <a href="editpost.php?id=<?php echo $row['PostID']; ?>" class="btn btn-primary btn-sm"><i class="bi bi-pencil"></i></a>
-                                        <a onclick="return confirm(' Bạn có chắc chắn muốn xoá?')" href="deletepost.php?id=<?php echo $row['PostID']; ?>"
-                                            class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a>
-                                    </td>
-                                </tr>
+                                $sql = "SELECT * FROM post ORDER BY postID DESC";
+                                $qr = mysqli_query($conn, $sql);
+                                if ($sql) {
+                                    $i = 0;
+                                    while ($row = mysqli_fetch_array($qr)) {
+                                        $i++;
+                                ?>
+
+                                        <tr>
+                                            <th class="text-center" scope="row">
+                                                <?php echo $i; ?>
+                                            </th>
+                                            <td class="text-center">
+                                                <?php
+                                                $imagePath = $row["Images"];
+                                                if (file_exists($imagePath)) {
+                                                    echo '<img src="' . $imagePath . '" style="max-width: 40px" class="img-fluid" alt="Post Image" />';
+                                                } else {
+                                                    echo 'Image not found';
+                                                }
+                                                ?>
+                                            </td>
+                                            <td class="text-center">
+                                                <span title="<?php echo $row['Title']; ?>"><?php echo mb_strimwidth($row['Title'], 0, 60, '...'); ?></span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span title="<?php echo $row['Abstract']; ?>"><?php echo mb_strimwidth($row['Abstract'], 0, 60, '...'); ?></span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span><?php echo date('d/m/Y', strtotime($row['CreateDate'])); ?></span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span><?php echo substr($row['Contents'], 0, 4000) . '...'; ?></span>
+                                            </td>
+                                            <th class="text-center"><?php echo $row["Author"]; ?></th>
+                                            <td class="text-center">
+                                                <a href="editpost.php?id=<?php echo $row['PostID']; ?>" class="btn btn-primary btn-sm" title="Edit Post"><i class="bi bi-pencil"></i></a>
+                                                <a onclick="return confirm('Are you sure you want to delete this post?')" href="deletepost.php?id=<?php echo $row['PostID']; ?>" class="btn btn-danger btn-sm" title="Delete Post"><i class="bi bi-trash"></i></a>
+                                            </td>
+                                        </tr>
                                 <?php
-                }
-            }
-            ?>
+                                    }
+                                }
+                                ?>
                             </tbody>
                         </table>
                     </div>

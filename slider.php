@@ -9,7 +9,7 @@
                     ?>
             <div class="first-slot">
                 <div class="masonry-box post-media">
-                    <img src="<?php echo $row['Images']; ?>" alt="" class="img-fluid">
+                <img src="./admin/<?php echo $row['Images']; ?>" alt="" class="img-fluid">
                     <div class="shadoweffect">
                         <div class="shadow-desc">
                             <div class="blog-meta">

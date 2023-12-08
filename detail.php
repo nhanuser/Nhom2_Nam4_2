@@ -74,7 +74,7 @@ if (isset($_GET["id"])) {
                                         <li class="breadcrumb-item active"><?php echo $row['Title'] ?></li>
                                     </ol>
 
-                                    <span class="color-orange"><a href="tech-category-01.html" title="">Technology</a></span>
+                                    <span class="color-orange"><a href="#" title="">Technology</a></span>
 
                                     <h3><?php echo $row['Title'] ?></h3>
 
@@ -94,7 +94,7 @@ if (isset($_GET["id"])) {
                                 </div><!-- end title -->
 
                                 <div class="single-post-media">
-                                    <img src="<?php echo $row['Images'] ?>" alt="" class="img-fluid">
+                                <img src="./admin/<?php echo $row['Images']; ?>" alt="" class="img-fluid">
                                 </div><!-- end media -->
 
                                 <div class="blog-content">

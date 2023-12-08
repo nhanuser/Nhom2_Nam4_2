@@ -27,7 +27,7 @@ include("slider.php");
                                         <div class="col-md-4">
                                             <div class="post-media">
                                                 <a href="detail.php?id=<?php echo $row['PostID']; ?>" title="">
-                                                    <img src="<?php echo $row['Images']; ?>" alt="" class="img-fluid">
+                                                <img src="./admin/<?php echo $row['Images']; ?>" alt="" class="img-fluid">
                                                     <div class="hovereffect"></div>
                                                 </a>
                                             </div><!-- end media -->

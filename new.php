@@ -150,7 +150,7 @@
                                             <div class="col-md-6">
                                                 <div class="blog-box">
                                                     <div class="post-media">
-                                                        <a href="tech-single.html" title="">
+                                                        <a href="detail.php?id=<?php echo $row['PostID']; ?>" title="">
                                                             <img src="./admin/<?php echo $row['Images']; ?>" alt="" class="img-fluid">
                                                             <div class="hovereffect">
                                                                 <span></span>
@@ -158,10 +158,10 @@
                                                         </a>
                                                     </div><!-- end media -->
                                                     <div class="blog-meta big-meta">
-                                                        <h4><a href="tech-single.html" title=""><?php echo $row["Title"] ?></a></h4>
+                                                        <h4><a href="detail.php?id=<?php echo $row['PostID']; ?>" title=""><?php echo $row["Title"] ?></a></h4>
                                                         <p><?php echo $row["Abstract"] ?></p>
-                                                        <small><a href="tech-single.html" title=""><?php echo date('d/m/Y', strtotime($row['CreateDate'])); ?></a></small>
-                                                        <small><a href="tech-author.html" title=""><?php echo $row["Author"] ?></a></small>
+                                                        <small><a href="" title=""><?php echo date('d/m/Y', strtotime($row['CreateDate'])); ?></a></small>
+                                                        <small><a href="" title=""><?php echo $row["Author"] ?></a></small>
                                                     </div><!-- end meta -->
                                                 </div><!-- end blog-box -->
                                             </div><!-- end col -->

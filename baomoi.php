@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <!-- Site Metas -->
-<title>Bài viết mới nhất</title>
+<title>Bản tin thời sự vnexpress</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content="">
@@ -61,7 +61,7 @@
                     <div class="col-lg-4 col-md-4 col-sm-12 hidden-xs-down hidden-sm-down">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index.php">Trang chủ</a></li>
-                            <li class="breadcrumb-item active">Bài viết mới nhất</li>
+                            <li class="breadcrumb-item active">Bản tin thời sự vnexpress</li>
                         </ol>
                     </div><!-- end col -->
                 </div><!-- end row -->
@@ -121,8 +121,6 @@
                             <div class="blog-grid-system">
                                 <div class="row">
                                     <?php
-                                    // Tính tổng số sản phẩm
-                                   
                                     // Đường link đến RSS feed
                                     $rssFeedUrl = 'https://vnexpress.net/rss/thoi-su.rss';
 
@@ -140,9 +138,6 @@
                                         die('Không thể phân tích RSS feed.');
                                     }
 
-                                    // In thông tin từ RSS feed
-                                    // echo '<h2>' . $rss->channel->title . '</h2>';
-                                    // echo '<p>' . $rss->channel->description . '</p>';
 
                                     // Duyệt qua các mục trong RSS feed và hiển thị thông tin
                                     foreach ($rss->channel->item as $item) {
@@ -155,22 +150,17 @@
                                     ?>
                                             <div class="col-md-6">
                                                 <div class="blog-box">
-                                                    <div class="post-media">
-                                                    <p><?php $item->title ?></p>
-                                                        <a href="<?php echo $item->link ?>" title="<?php $item->title ?>">
-                                                        
+                                                    <div class="post-media">                                                       
                                                         <?php
-                                                        echo str_replace('<img', '<img style="max-width:200px; max-height:200px;"', $item->description);
-                                                        ?>
-                                                            <div class="hovereffect">
-                                                                <span></span>
-                                                            </div><!-- end hover -->
+                                                        echo str_replace('<img', '<img style="max-width:400px; max-height:400px;"', $item->description);
+                                                        ?>                                                          
                                                         </a>
                                                     </div><!-- end media -->
                                                     <div class="blog-meta big-meta">
-                                                        
-                                                        <small><a href="tech-single.html" title=""><?php echo $item->pubDate ?></a></small>
-                                                        <small><a href="tech-author.html" title=""></a></small>
+                                                        <p><?php $item->title ?></p>
+                                                        <a href="<?php echo $item->link ?>" title="<?php $item->title ?>">
+                                                        <small><a href="" title=""><?php echo $item->pubDate ?></a></small>
+                                                        <small><a href="" title=""></a></small>
                                                     </div><!-- end meta -->
                                                 </div><!-- end blog-box -->
                                             </div><!-- end col -->
@@ -190,11 +180,7 @@
                             <div class="col-md-12">
                                 <nav aria-label="Page navigation">
                                     <ul class="pagination justify-content-start">
-                                        <?php
-                                        for ($i = 1; $i <= $totalPages; $i++) {
-                                            echo '<li class="page-item ' . ($currentpage == $i ? 'active' : '') . '"><a class="page-link" href="?page=' . $i . '">' . $i . '</a></li>';
-                                        }
-                                        ?>
+                                       
                                     </ul>
                                 </nav>
                             </div><!-- end col -->

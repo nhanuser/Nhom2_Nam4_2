@@ -122,56 +122,62 @@
                                 <div class="row">
                                     <?php
                                     // Tính tổng số sản phẩm
-                                    $totalProducts = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM post WHERE MenuID = 2"));
+                                   
+                                    // Đường link đến RSS feed
+                                    $rssFeedUrl = 'https://vnexpress.net/rss/thoi-su.rss';
 
-                                    // Số sản phẩm trên mỗi trang
-                                    $productsPerPage = 8;
+                                    // Lấy nội dung từ RSS feed
+                                    $rssContent = file_get_contents($rssFeedUrl);
 
-                                    // Tổng số trang
-                                    $totalPages = ceil($totalProducts / $productsPerPage);
+                                    if ($rssContent === false) {
+                                        die('Không thể đọc được RSS feed.');
+                                    }
 
-                                    // Trang hiện tại (mặc định là trang 1)
-                                    $currentpage = isset($_GET['page']) ? $_GET['page'] : 1;
+                                    // Chuyển đổi nội dung RSS từ chuỗi XML thành đối tượng SimpleXMLElement
+                                    $rss = simplexml_load_string($rssContent);
 
-                                    // Xác định vị trí bắt đầu của sản phẩm trong truy vấn
-                                    $startFrom = ($currentpage - 1) * $productsPerPage;
+                                    if ($rss === false) {
+                                        die('Không thể phân tích RSS feed.');
+                                    }
 
-                                    // Truy vấn với LIMIT để lấy số lượng sản phẩm cho trang hiện tại
-                                    $sql = "SELECT * FROM post WHERE MenuID = 2 LIMIT $startFrom, $productsPerPage";
-                                    $qr = mysqli_query($conn, $sql);
+                                    // In thông tin từ RSS feed
+                                    // echo '<h2>' . $rss->channel->title . '</h2>';
+                                    // echo '<p>' . $rss->channel->description . '</p>';
 
-                                    // Hiển thị sản phẩm
-                                    if ($qr) {
-                                        $count = 0; // Đếm số sản phẩm đã hiển thị trong mỗi hàng
-
-                                        while ($row = mysqli_fetch_array($qr)) {
-                                            $count++;
+                                    // Duyệt qua các mục trong RSS feed và hiển thị thông tin
+                                    foreach ($rss->channel->item as $item) {
+                                        // echo '<h3><a href="' . $item->link . '">' . $item->title . '</a></h3>';
+                                        // echo '<p>' . $item->pubDate . '</p>';
+                                        // echo '<p>' . $item->description . '</p>';
+                                        // echo '<hr>';
+                                    
+                                   
                                     ?>
                                             <div class="col-md-6">
                                                 <div class="blog-box">
                                                     <div class="post-media">
-                                                        <a href="tech-single.html" title="">
-                                                            <img src="./admin/<?php echo $row['Images']; ?>" alt="" class="img-fluid">
+                                                    <p><?php $item->title ?></p>
+                                                        <a href="<?php echo $item->link ?>" title="<?php $item->title ?>">
+                                                        
+                                                        <?php
+                                                        echo str_replace('<img', '<img style="max-width:200px; max-height:200px;"', $item->description);
+                                                        ?>
                                                             <div class="hovereffect">
                                                                 <span></span>
                                                             </div><!-- end hover -->
                                                         </a>
                                                     </div><!-- end media -->
                                                     <div class="blog-meta big-meta">
-                                                        <h4><a href="tech-single.html" title=""><?php echo $row["Title"] ?></a></h4>
-                                                        <p><?php echo $row["Abstract"] ?></p>
-                                                        <small><a href="tech-single.html" title=""><?php echo date('d/m/Y', strtotime($row['CreateDate'])); ?></a></small>
-                                                        <small><a href="tech-author.html" title=""><?php echo $row["Author"] ?></a></small>
+                                                        
+                                                        <small><a href="tech-single.html" title=""><?php echo $item->pubDate ?></a></small>
+                                                        <small><a href="tech-author.html" title=""></a></small>
                                                     </div><!-- end meta -->
                                                 </div><!-- end blog-box -->
                                             </div><!-- end col -->
 
                                     <?php
-                                            if ($count == 2) {
-                                                echo '</div><div class="row">'; // Kết thúc hàng và bắt đầu hàng mới
-                                                $count = 0; // Đặt lại đếm cho hàng mới
-                                            }
-                                        }
+                                            
+                                        
                                     }
                                     ?>
                                 </div><!-- end row -->
